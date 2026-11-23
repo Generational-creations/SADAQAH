@@ -75,4 +75,19 @@ document.querySelectorAll('.donation-form').forEach(function(form){
     }
   });
 });
+var timelineItems=document.querySelectorAll('.timeline-item');
+if(timelineItems.length&&'IntersectionObserver' in window){
+  // Reveal each timeline chapter once as it enters the viewport.
+  var timelineObserver=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        timelineObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.18});
+  timelineItems.forEach(function(item){timelineObserver.observe(item)});
+}else{
+  timelineItems.forEach(function(item){item.classList.add('is-visible')});
+}
 })();
