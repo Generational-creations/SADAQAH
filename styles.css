@@ -89,13 +89,39 @@ a {
 }
 /* nav */
 header {
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+header.is-scrolled {
   background: #fff;
   color: #17231d;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  border-bottom: 1px solid #e8e8e3;
+  border-bottom-color: #e8e8e3;
   box-shadow: 0 4px 14px rgba(10, 35, 24, 0.12);
+}
+header:not(.is-scrolled) .nav .logo,
+header:not(.is-scrolled) .links a {
+  color: #fff;
+}
+header:not(.is-scrolled) .nav .logo small {
+  color: #dcebe2;
+}
+header.is-scrolled .nav .logo,
+header.is-scrolled .links a {
+  color: #17231d;
+}
+header.is-scrolled .nav .logo small {
+  color: #526158;
 }
 .nav {
   position: relative;
@@ -215,14 +241,14 @@ header {
   overflow: hidden;
   background: var(--g);
   padding: 0;
-  min-height: calc(100vh - 58px);
+  min-height: 100vh;
 }
 .hero-wrap {
   position: relative;
   display: flex;
   align-items: center;
   max-width: none;
-  min-height: calc(100vh - 58px);
+  min-height: 100vh;
   padding: 0;
 }
 .hero-copy {
@@ -360,6 +386,7 @@ header {
   .links.is-open a {
     padding: 12px 0;
     border-bottom: 1px solid #eee;
+    color: #17231d;
   }
   .links.is-open a:last-child {
     border-bottom: 0;
@@ -386,7 +413,7 @@ header {
     background: currentColor;
   }
   .hero-wrap {
-    min-height: calc(100vh - 56px);
+    min-height: 100vh;
     align-items: flex-start;
   }
   .hero-copy {
@@ -724,6 +751,23 @@ section {
 }
 .donation-form input {
   margin: 0;
+}
+.donation-form .consent-label {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+  line-height: 1.45;
+  cursor: pointer;
+}
+.donation-form .consent-label input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  accent-color: var(--red);
 }
 @media (max-width: 600px) {
   .payment-options {

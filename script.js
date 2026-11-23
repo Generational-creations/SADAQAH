@@ -2,6 +2,12 @@
 (function(){
 var menuButton=document.querySelector('.menu-toggle');
 var primaryNav=document.getElementById('primary-nav');
+var siteHeader=document.querySelector('header');
+function updateHeader(){
+  if(siteHeader)siteHeader.classList.toggle('is-scrolled',window.scrollY>20);
+}
+window.addEventListener('scroll',updateHeader,{passive:true});
+updateHeader();
 function setMenuOpen(open){
   if(!menuButton||!primaryNav)return;
   menuButton.setAttribute('aria-expanded',String(open));

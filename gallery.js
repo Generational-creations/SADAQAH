@@ -30,6 +30,13 @@
   var grid = document.getElementById("field-gallery");
   var menuButton = document.querySelector(".menu-toggle");
   var primaryNav = document.getElementById("primary-nav");
+  var siteHeader = document.querySelector("header");
+
+  function updateHeader() {
+    siteHeader.classList.toggle("is-scrolled", window.scrollY > 20);
+  }
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
 
   fieldImages.forEach(function (name, index) {
     var image = document.createElement("div");
