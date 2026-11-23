@@ -28,28 +28,45 @@ if(menuButton&&primaryNav){
     if(window.innerWidth>760)setMenuOpen(false);
   });
 }
-function toggle(sel){var buttons=document.querySelectorAll(sel);if(!buttons.length)return;buttons.forEach(function(b){b.addEventListener('click',function(){
-  document.querySelectorAll(sel).forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');
-  if(sel==='.amts button'){var cust=document.getElementById('cust');if(cust)cust.value='';}
-})})}
-toggle('.seg button');toggle('.amts button');
-var cust=document.getElementById('cust');
-if(cust){
-  cust.addEventListener('input',function(){
-    cust.value=cust.value.replace(/[^0-9.]/g,'').replace(/(\..*)\./g,'$1');
-    if(cust.value)document.querySelectorAll('.amts button').forEach(function(x){x.setAttribute('aria-pressed','false')});
+var paymentOptions=document.querySelectorAll('.payment-option');
+var paymentMessage=document.getElementById('payment-msg');
+paymentOptions.forEach(function(option){
+  option.addEventListener('click',function(){
+    var panelId=option.getAttribute('aria-controls');
+    var willOpen=option.getAttribute('aria-expanded')!== 'true';
+    paymentOptions.forEach(function(button){
+      button.setAttribute('aria-expanded','false');
+      button.querySelector('.payment-chevron').textContent='+';
+      var panel=document.getElementById(button.getAttribute('aria-controls'));
+      if(panel)panel.hidden=true;
+    });
+    if(willOpen){
+      option.setAttribute('aria-expanded','true');
+      option.querySelector('.payment-chevron').textContent='-';
+      var panel=document.getElementById(panelId);
+      if(panel){
+        panel.hidden=false;
+        var firstInput=panel.querySelector('input');
+        if(firstInput)firstInput.focus();
+      }
+      if(paymentMessage)paymentMessage.textContent=option.dataset.payment+' details';
+    }
   });
-}
-var donateButton=document.getElementById('don');
-if(donateButton){
-  donateButton.addEventListener('click',function(){
-    var sel=document.querySelector('.amts button[aria-pressed=true]');
-    var amt=cust&&cust.value?parseFloat(cust.value):(sel?parseFloat(sel.dataset.a):0);
-    var frequencyButton=document.querySelector('.seg button[aria-pressed=true]');
-    var f=frequencyButton?frequencyButton.dataset.f:'One-time';
-    var m=document.getElementById('msg');
-    if(!(amt>=1&&amt<=10000)){if(m)m.textContent='Enter an amount between $1 and $10,000.';return}
-    if(m)m.textContent=f+' gift of $'+amt.toFixed(2)+' selected. Secure checkout is not connected yet.';
+});
+document.querySelectorAll('.donation-form').forEach(function(form){
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
+    var amount=form.elements.amount.value;
+    if(!amount||parseFloat(amount)<1){
+      if(paymentMessage)paymentMessage.textContent='Enter a donation amount of at least 1.';
+      return;
+    }
+    var method=form.dataset.method;
+    if(paymentMessage){
+      paymentMessage.textContent=method==='Bank'
+        ? 'Your bank transfer request is ready. Account details need to be connected.'
+        : 'Your mobile money request is ready. Secure payment setup is not connected yet.';
+    }
   });
-}
+});
 })();

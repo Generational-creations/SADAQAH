@@ -650,55 +650,85 @@ section {
   padding: 22px;
   border-radius: 3px;
 }
-.seg {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 12px 0;
-}
-.seg button {
-  padding: 9px;
-  border: 1px solid var(--bd);
-  background: #fff;
-  font: 600 0.78rem var(--sans);
-  cursor: pointer;
-  color: var(--ink);
-  border-radius: 999px;
-}
-.seg button[aria-pressed="true"] {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
-}
-.amts {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.amts button {
-  padding: 10px;
-  border: 1px solid var(--bd);
-  background: #fff;
-  font: 600 0.8rem var(--sans);
-  cursor: pointer;
-  color: var(--ink);
-  border-radius: 999px;
-}
-.amts button[aria-pressed="true"] {
-  border-color: var(--red);
-  color: var(--red);
-  box-shadow: inset 0 0 0 1px var(--red);
-}
 .card input {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--bd);
-  border-radius: 999px;
+  border-radius: 6px;
   font: inherit;
   margin-bottom: 12px;
 }
 .card .btn {
   width: 100%;
+}
+.payment-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+.payment-option {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 68px;
+  padding: 10px 12px;
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: 600 0.82rem var(--sans);
+  text-align: left;
+  cursor: pointer;
+}
+.payment-option[aria-expanded="true"] {
+  border-color: var(--red);
+  box-shadow: inset 0 0 0 1px var(--red);
+}
+.payment-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf4ef;
+}
+.payment-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: var(--g);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.payment-chevron {
+  color: var(--red);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.payment-panel {
+  padding-top: 4px;
+}
+.donation-form {
+  display: grid;
+  gap: 10px;
+}
+.donation-form label {
+  display: grid;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--mut);
+}
+.donation-form input {
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .payment-options {
+    grid-template-columns: 1fr;
+  }
 }
 .note {
   font-size: 0.72rem;
