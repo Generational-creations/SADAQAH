@@ -600,7 +600,7 @@ section {
   background: var(--cream);
 }
 .story-hero {
-  min-height: 520px;
+  min-height: 420px;
   display: flex;
   align-items: flex-end;
   position: relative;
@@ -608,14 +608,14 @@ section {
   color: #fff;
   background:
     linear-gradient(90deg, rgba(7, 58, 37, 0.96), rgba(7, 58, 37, 0.62) 58%, rgba(7, 58, 37, 0.15)),
-    url("images/IMG-20261114-WA0153.jpg") center 48% / cover no-repeat;
+    url("images/IMG-20261114-WA0152.jpg") center 48% / cover no-repeat;
 }
 .story-hero-inner {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding-top: 150px;
-  padding-bottom: 72px;
+  padding-top: 112px;
+  padding-bottom: 52px;
 }
 .story-hero h1 {
   max-width: 680px;
@@ -743,10 +743,11 @@ section {
 }
 @media (max-width: 760px) {
   .story-hero {
-    min-height: 480px;
+    min-height: 260px;
   }
   .story-hero-inner {
-    padding-bottom: 48px;
+    padding-top: 96px;
+    padding-bottom: 40px;
   }
   .story-timeline-section {
     padding: 64px 0 72px;
