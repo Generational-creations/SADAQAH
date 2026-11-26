@@ -6,7 +6,7 @@
     <meta name="referrer" content="no-referrer" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'"
+      content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.gtranslate.net; connect-src https://translate.googleapis.com https://translate-pa.googleapis.com https://translate.google.com https://*.gtranslate.net; frame-src https://translate.google.com https://*.gtranslate.net; img-src 'self' data:; base-uri 'none'; form-action 'none'"
     />
     <title>Our Story | SADAQAH Initiative Foundation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,6 +30,18 @@
           <a href="index.html#give">GET INVOLVED</a>
           <a href="contact.html">CONTACTS</a>
         </nav>
+        <div class="language-control">
+          <button class="language-toggle" type="button" aria-label="Choose language" aria-expanded="false" aria-controls="language-popover">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path>
+            </svg>
+          </button>
+          <section class="language-popover" id="language-popover" aria-label="Language selection" hidden>
+            <h2>Choose a language</h2>
+            <div class="gtranslate_wrapper" aria-label="Available languages"></div>
+          </section>
+        </div>
         <a class="btn red" href="index.html#give">Donate now</a>
       </div>
     </header>
@@ -181,6 +193,7 @@
       </div>
     </footer>
 
+    <script src="language.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
