@@ -1383,6 +1383,10 @@ footer.dark h4 {
   color: var(--ink);
   font-weight: 500;
 }
+.contact-list a,
+.contact-chips a {
+  overflow-wrap: anywhere;
+}
 .contact-form {
   display: grid;
   gap: 16px;
