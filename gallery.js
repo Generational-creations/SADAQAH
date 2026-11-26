@@ -61,6 +61,15 @@
       setMenuOpen(false);
     });
   });
+  document.addEventListener("click", function (event) {
+    if (
+      menuButton.getAttribute("aria-expanded") === "true" &&
+      !primaryNav.contains(event.target) &&
+      !menuButton.contains(event.target)
+    ) {
+      setMenuOpen(false);
+    }
+  });
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape") setMenuOpen(false);
   });

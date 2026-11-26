@@ -610,9 +610,34 @@ section {
     linear-gradient(90deg, rgba(7, 58, 37, 0.96), rgba(7, 58, 37, 0.62) 58%, rgba(7, 58, 37, 0.15)),
     url("images/IMG-20261114-WA0152.jpg") center 48% / cover no-repeat;
 }
+.story-hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.story-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center 48%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.story-hero-slide.is-active {
+  opacity: 1;
+}
+.story-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(7, 58, 37, 0.96), rgba(7, 58, 37, 0.62) 58%, rgba(7, 58, 37, 0.15));
+  pointer-events: none;
+}
 .story-hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   padding-top: 112px;
   padding-bottom: 52px;
@@ -1078,6 +1103,9 @@ details p {
 @media (prefers-reduced-motion: reduce) {
   .funders-marquee-track {
     animation: none;
+  }
+  .story-hero-slide {
+    transition: none;
   }
 }
 footer {
