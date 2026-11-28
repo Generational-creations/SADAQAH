@@ -40,7 +40,7 @@ if(menuButton&&primaryNav){
   });
 }
 var storyHero=document.querySelector('.story-hero');
-if(storyHero){
+if(storyHero&&storyHero.querySelectorAll('.story-hero-slide').length){
   var storySlides=[
     'IMG-20261114-WA0152.jpg',
     'IMG-20261114-WA0137.jpg',
