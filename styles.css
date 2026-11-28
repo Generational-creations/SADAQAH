@@ -643,11 +643,51 @@ section {
   align-items: start;
 }
 .projects-grid .card {
-  min-height: 255px;
+  position: relative;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
   box-shadow: 0 12px 30px rgba(12, 35, 26, 0.14);
+  overflow: hidden;
+  isolation: isolate;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.projects-grid .card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(7, 39, 26, 0.18) 15%, rgba(7, 39, 26, 0.88) 100%);
+}
+.projects-grid .project-water {
+  background-image: url("images/IMG-20261114-WA0152.jpg");
+}
+.projects-grid .project-food {
+  background-image: url("images/IMG-20261114-WA0137.jpg");
+}
+.projects-grid .project-child {
+  background-image: url("images/IMG-20261114-WA0128.jpg");
+}
+.projects-grid .project-education {
+  background-image: url("images/IMG-20261114-WA0179.jpg");
+}
+.projects-grid .project-livelihoods {
+  background-image: url("images/IMG-20261114-WA0143.jpg");
+}
+.projects-grid .project-relief {
+  background-image: url("images/IMG-20261114-WA0151.jpg");
+}
+.projects-grid .card h2,
+.projects-grid .card .muted,
+.projects-grid .card .eyebrow {
+  color: #fff;
+}
+.projects-grid .card .eyebrow {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 .projects-grid .card .btn {
   margin-top: auto;
