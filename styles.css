@@ -646,10 +646,14 @@ section {
   min-height: 255px;
   display: flex;
   flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(12, 35, 26, 0.14);
 }
-.projects-grid .card .tl {
+.projects-grid .card .btn {
   margin-top: auto;
-  padding-top: 18px;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  text-align: center;
 }
 @media (max-width: 760px) {
   .two {
