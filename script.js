@@ -86,12 +86,24 @@ if(giftConfigurator){
   var givingPaymentStep=document.getElementById('giving-payment-step');
   var startMonthlyGift=document.getElementById('start-monthly-gift');
 
+  var requestedProgram=new URLSearchParams(window.location.search).get('program');
+  if(requestedProgram){
+    var requestedInput=Array.from(giftConfigurator.querySelectorAll('input[name="program"]')).find(function(input){
+      return input.value===requestedProgram;
+    });
+    if(requestedInput){
+      giftConfigurator.querySelectorAll('input[name="program"]').forEach(function(input){
+        input.checked=input===requestedInput;
+      });
+    }
+  }
+
   function updateMonthlyGift(){
     var selectedProgram=giftConfigurator.querySelector('input[name="program"]:checked');
     var selectedAmount=giftConfigurator.querySelector('input[name="gift_amount"]:checked');
     var amountValue=customGiftAmount.value.trim()|| (selectedAmount&&selectedAmount.value);
     var amount=Number(amountValue);
-    var program=selectedProgram?selectedProgram.value:'Clean Water';
+    var program=selectedProgram?selectedProgram.value:'Water Wells';
     var programOption=selectedProgram?selectedProgram.closest('.program-option'):null;
     var description=programOption?programOption.querySelector('small').dataset.description:'';
 
@@ -134,6 +146,11 @@ if(giftConfigurator){
   });
 
   updateMonthlyGift();
+  if(window.location.hash === '#monthly-gift-form'){
+    window.requestAnimationFrame(function(){
+      giftConfigurator.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  }
   document.addEventListener('sadaqah:languagechange',updateMonthlyGift);
   startMonthlyGift.addEventListener('click',function(){
     var amount=updateMonthlyGift();

@@ -636,8 +636,26 @@ section {
   gap: 56px;
   align-items: start;
 }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.projects-grid .card {
+  min-height: 255px;
+  display: flex;
+  flex-direction: column;
+}
+.projects-grid .card .tl {
+  margin-top: auto;
+  padding-top: 18px;
+}
 @media (max-width: 760px) {
   .two {
+    grid-template-columns: 1fr;
+  }
+  .projects-grid {
     grid-template-columns: 1fr;
   }
   .story-copy {
